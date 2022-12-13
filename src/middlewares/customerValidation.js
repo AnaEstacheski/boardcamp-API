@@ -4,7 +4,7 @@ import customerSchema from "../models/customerSchema.js";
 export async function customerValidation(req, res, next) {
     const { cpf } = req.body;
 
-    const { error } = customerSchema.validate(req.customerObj, { abortEarly: false });
+    const { error } = customerSchema.validate(req.body, { abortEarly: false });
     if (error) {
         return res.status(400).send(error.details.map(detail => detail.message))
     }
